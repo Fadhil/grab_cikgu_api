@@ -7,5 +7,7 @@ defmodule GrabCikguApiWeb.Router do
 
   scope "/api", GrabCikguApiWeb do
     pipe_through :api
+
+    resources "/tutors", TutorController
   end
 end
