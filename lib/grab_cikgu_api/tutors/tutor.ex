@@ -18,5 +18,6 @@ defmodule GrabCikguApi.Tutors.Tutor do
     tutor
     |> cast(attrs, @all_attrs)
     |> validate_required([:name, :email])
+    |> unique_constraint(:email)
   end
 end
