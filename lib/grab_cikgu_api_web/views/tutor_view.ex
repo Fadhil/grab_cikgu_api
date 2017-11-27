@@ -13,6 +13,6 @@ defmodule GrabCikguApiWeb.TutorView do
   def render("tutor.json", %{tutor: tutor}) do
     %{id: tutor.id,
       name: tutor.name,
-      username: tutor.username}
+      email: tutor.email}
   end
 end
