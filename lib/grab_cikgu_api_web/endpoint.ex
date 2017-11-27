@@ -36,6 +36,8 @@ defmodule GrabCikguApiWeb.Endpoint do
     key: "_grab_cikgu_api_key",
     signing_salt: "OvLTPtK9"
 
+  plug CORSPlug, origin: ["http://localhost:4200"]
+
   plug GrabCikguApiWeb.Router
 
   @doc """

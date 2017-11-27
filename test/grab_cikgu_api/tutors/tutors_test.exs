@@ -6,9 +6,13 @@ defmodule GrabCikguApi.TutorsTest do
   describe "tutors" do
     alias GrabCikguApi.Tutors.Tutor
 
-    @valid_attrs %{name: "some name", username: "some username"}
-    @update_attrs %{name: "some updated name", username: "some updated username"}
-    @invalid_attrs %{name: nil, username: nil}
+    @valid_attrs %{name: "some name", username: "some username",
+     email: "some@email.com", gender: "Female", occupation: "Teacher"}
+
+    @update_attrs %{name: "some updated name", username: "some updated username",
+     occupation: "new occupation"}
+
+    @invalid_attrs %{name: nil, email: nil}
 
     def tutor_fixture(attrs \\ %{}) do
       {:ok, tutor} =
@@ -38,6 +42,12 @@ defmodule GrabCikguApi.TutorsTest do
     test "create_tutor/1 with invalid data returns error changeset" do
       assert {:error, %Ecto.Changeset{}} = Tutors.create_tutor(@invalid_attrs)
     end
+
+    test "registering an email twice returns an error changeset" do
+      assert {:ok, %Tutor{} = tutor} = Tutors.create_tutor(@valid_attrs)
+      assert {:error, %Ecto.Changeset{}} = Tutors.create_tutor(@valid_attrs)
+    end
+
 
     test "update_tutor/2 with valid data updates the tutor" do
       tutor = tutor_fixture()
