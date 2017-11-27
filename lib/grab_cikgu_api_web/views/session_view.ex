@@ -6,6 +6,6 @@ defmodule GrabCikguApiWeb.SessionView do
   end
 
   def render("error.json", _tutor_params) do
-    %{errors: "Failed to authenticate"}
+    %{errors: %{detail: "Failed to authenticate"}}
   end
 end
