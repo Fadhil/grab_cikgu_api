@@ -36,6 +36,11 @@ defmodule GrabCikguApi.Tutors.Tutor do
     |> unique_constraint(:email)
   end
 
+  def update_token_changeset(%Tutor{} = tutor, token_attr) do
+    tutor
+    |> cast(token_attr,[:token])
+  end
+
   def put_password_hash(changeset) do
     case changeset do
       %Ecto.Changeset{valid?: true, changes: %{password: pass}} ->

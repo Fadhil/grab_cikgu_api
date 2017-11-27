@@ -9,5 +9,6 @@ defmodule GrabCikguApiWeb.Router do
     pipe_through :api
 
     resources "/tutors", TutorController
+    post "/tutor/login", SessionController, :create
   end
 end

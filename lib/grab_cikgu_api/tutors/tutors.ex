@@ -4,6 +4,7 @@ defmodule GrabCikguApi.Tutors do
   """
 
   import Ecto.Query, warn: false
+  import SecureRandom, only: [ urlsafe_base64: 0 ]
   alias GrabCikguApi.Repo
 
   alias GrabCikguApi.Tutors.Tutor
@@ -35,7 +36,11 @@ defmodule GrabCikguApi.Tutors do
       ** (Ecto.NoResultsError)
 
   """
-  def get_tutor!(id), do: Repo.get!(Tutor, id)
+  def get_tutor!(id) when is_integer(id), do: Repo.get!(Tutor, id)
+
+  def get_tutor(email) when is_bitstring(email) do
+    Repo.get_by(Tutor, %{email: email})
+  end
 
   @doc """
   Creates a tutor.
@@ -67,6 +72,13 @@ defmodule GrabCikguApi.Tutors do
       {:error, %Ecto.Changeset{}}
 
   """
+  def update_token(%Tutor{} = tutor) do
+    token = SecureRandom.urlsafe_base64()
+    tutor
+    |> Tutor.update_token_changeset(%{token: token})
+    |> Repo.update
+  end
+
   def update_tutor(%Tutor{} = tutor, attrs) do
     tutor
     |> Tutor.changeset(attrs)
