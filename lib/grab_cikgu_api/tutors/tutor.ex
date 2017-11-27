@@ -10,6 +10,7 @@ defmodule GrabCikguApi.Tutors.Tutor do
     field :username, :string
     field :password, :string, virtual: true
     field :password_hash, :string
+    field :token, :string
 
     timestamps()
   end
