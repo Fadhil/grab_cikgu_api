@@ -51,7 +51,7 @@ defmodule GrabCikguApi.Tutors do
   """
   def create_tutor(attrs \\ %{}) do
     %Tutor{}
-    |> Tutor.changeset(attrs)
+    |> Tutor.registration_changeset(attrs)
     |> Repo.insert()
   end
 
