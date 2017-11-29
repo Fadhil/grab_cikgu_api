@@ -1,7 +1,7 @@
 defmodule GrabCikguApi.Tutors.Tutor do
   use Ecto.Schema
   import Ecto.Changeset
-  alias GrabCikguApi.Tutors.Tutor
+  alias GrabCikguApi.Tutors.{Tutor, TutorProfile}
 
 
   schema "tutors" do
@@ -10,6 +10,8 @@ defmodule GrabCikguApi.Tutors.Tutor do
     field :password, :string, virtual: true
     field :password_hash, :string
     field :token, :string
+
+    has_one :profile, TutorProfile
 
     timestamps()
   end
