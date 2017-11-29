@@ -1,6 +1,10 @@
 defmodule GrabCikguApiWeb.ErrorView do
   use GrabCikguApiWeb, :view
 
+  def render("401.json", %{message: message}) do
+    %{errors: %{detail: message}}
+  end
+
   def render("404.json", _assigns) do
     %{errors: %{detail: "Page not found"}}
   end
