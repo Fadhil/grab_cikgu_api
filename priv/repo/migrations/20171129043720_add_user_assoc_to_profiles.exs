@@ -3,7 +3,7 @@ defmodule GrabCikguApi.Repo.Migrations.AddUserAssocToProfiles do
 
   def change do
     alter table(:profiles) do
-      add :tutor_id, references(:tutors)
+      add :tutor_id, references(:tutors, on_delete: :delete_all)
     end
   end
 end
