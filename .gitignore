@@ -29,3 +29,6 @@ npm-debug.log
 # Vim stuff
 *.swp
 *.swo
+
+# Ctags tags
+tags
