@@ -24,6 +24,8 @@ defmodule GrabCikguApi.Tutors.TutorProfile do
     field :bank_acc_no, :string
     field :bank_name, :string
 
+    belongs_to :tutor, Tutor
+
     timestamps()
   end
 end
