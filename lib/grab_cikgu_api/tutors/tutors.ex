@@ -25,7 +25,7 @@ defmodule GrabCikguApi.Tutors do
   @doc """
   Gets a user by token
   """
-  def get_tutor(attrs) do
+  def get_tutor_by_token(%{token: _token} = attrs) do
     Repo.get_by(Tutor, attrs) |> Repo.preload(:profile)
   end
 

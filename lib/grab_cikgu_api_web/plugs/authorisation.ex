@@ -8,13 +8,13 @@ defmodule GrabCikguApiWeb.Plugs.Authorisation do
     encoded_json_error =
       Poison.encode!(%{errors: %{details: "You need to be logged in to do that"}})
 
-    case get_req_header(conn, "authorisation") do
+    case get_req_header(conn, "authorization") do
       [] ->
         conn
         |> send_resp(401, encoded_json_error)
         |> halt
       [token] ->
-        case Tutors.get_tutor(%{token: token}) do
+        case Tutors.get_tutor_by_token(%{token: token}) do
           nil ->
             conn
             |> send_resp(401, encoded_json_error)
