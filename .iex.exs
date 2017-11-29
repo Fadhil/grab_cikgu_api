@@ -1,2 +1,2 @@
 alias GrabCikguApi.Repo
-alias GrabCikguApi.Tutors.Tutor
+alias GrabCikguApi.Tutors.{Tutor, TutorProfile}
