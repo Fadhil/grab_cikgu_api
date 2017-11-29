@@ -73,7 +73,7 @@ defmodule GrabCikguApi.Tutors do
 
   """
   def update_token(%Tutor{} = tutor) do
-    token = SecureRandom.urlsafe_base64()
+    token = urlsafe_base64()
     tutor
     |> Tutor.update_token_changeset(%{token: token})
     |> Repo.update
