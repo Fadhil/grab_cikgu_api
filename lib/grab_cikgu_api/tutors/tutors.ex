@@ -23,6 +23,13 @@ defmodule GrabCikguApi.Tutors do
   end
 
   @doc """
+  Gets a user by token
+  """
+  def get_tutor(attrs) do
+    Repo.get_by(Tutor, attrs) |> Repo.preload(:profile)
+  end
+
+  @doc """
   Gets a single tutor.
 
   Raises `Ecto.NoResultsError` if the Tutor does not exist.
