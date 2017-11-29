@@ -19,7 +19,7 @@ defmodule GrabCikguApi.Tutors do
 
   """
   def list_tutors do
-    Repo.all(Tutor)
+    Repo.all(Tutor) |> Repo.preload(:profile)
   end
 
   @doc """
