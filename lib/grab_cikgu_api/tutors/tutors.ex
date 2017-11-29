@@ -19,7 +19,14 @@ defmodule GrabCikguApi.Tutors do
 
   """
   def list_tutors do
-    Repo.all(Tutor)
+    Repo.all(Tutor) |> Repo.preload(:profile)
+  end
+
+  @doc """
+  Gets a user by token
+  """
+  def get_tutor(attrs) do
+    Repo.get_by(Tutor, attrs) |> Repo.preload(:profile)
   end
 
   @doc """
