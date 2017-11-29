@@ -5,7 +5,6 @@ defmodule GrabCikguApi.Tutors.Tutor do
 
 
   schema "tutors" do
-    field :name, :string
     field :email, :string, unique: true
     field :username, :string
     field :password, :string, virtual: true
@@ -15,8 +14,8 @@ defmodule GrabCikguApi.Tutors.Tutor do
     timestamps()
   end
 
-  @all_attrs [:name, :email, :username, :password, :password_hash]
-  @required_attrs [:name, :email, :password]
+  @all_attrs [:email, :username, :password, :password_hash]
+  @required_attrs [:email, :password]
   @doc false
 
   def registration_changeset(%Tutor{} = tutor, attrs) do
@@ -32,7 +31,7 @@ defmodule GrabCikguApi.Tutors.Tutor do
   def changeset(%Tutor{} = tutor, attrs) do
     tutor
     |> cast(attrs, @all_attrs)
-    |> validate_required([:name, :email, :password])
+    |> validate_required(@required_attrs)
     |> unique_constraint(:email)
   end
 
