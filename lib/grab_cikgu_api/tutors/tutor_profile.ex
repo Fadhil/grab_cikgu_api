@@ -1,7 +1,7 @@
 defmodule GrabCikguApi.Tutors.TutorProfile do
   use Ecto.Schema
   import Ecto.Changeset
-  alias GrabCikguApi.Tutors.Tutor
+  alias GrabCikguApi.Tutors.{Tutor, TutorProfile}
 
   schema "profiles" do
     field :full_name, :string
@@ -27,5 +27,16 @@ defmodule GrabCikguApi.Tutors.TutorProfile do
     belongs_to :tutor, Tutor
 
     timestamps()
+  end
+
+  @all_attrs [:full_name, :ic_no, :gender, :age, :occupation, :address,
+    :phone_no, :tutor_license_no, :qualification, :achievement, :experience,
+    :description, :area_covered, :hourly_rate_cents, :availability,
+    :teach_in_center, :bank_acc_name, :bank_acc_name, :bank_name
+  ]
+
+  def new_changeset(%TutorProfile{} = profile, attrs) do
+    profile
+    |> cast(attrs, @all_attrs)
   end
 end
