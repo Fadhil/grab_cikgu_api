@@ -10,6 +10,7 @@ defmodule GrabCikguApi.Tutors.TutorProfile do
     field :age, :integer
     field :occupation, :string
     field :address, :string
+    field :state, :string
     field :phone_no, :string
     field :tutor_license_no, :string
     field :qualification, :string
