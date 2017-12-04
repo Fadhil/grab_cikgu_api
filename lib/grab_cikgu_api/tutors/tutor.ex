@@ -19,6 +19,7 @@ defmodule GrabCikguApi.Tutors.Tutor do
 
   @all_attrs [:name, :email, :username, :password, :password_hash]
   @required_attrs [:name, :email, :password]
+  @update_attrs [:name, :email]
   @doc false
 
   def registration_changeset(%Tutor{} = tutor, attrs) do
@@ -36,8 +37,9 @@ defmodule GrabCikguApi.Tutors.Tutor do
   def changeset(%Tutor{} = tutor, attrs) do
     tutor
     |> cast(attrs, @all_attrs)
-    |> validate_required(@required_attrs)
+    |> validate_required(@update_attrs)
     |> unique_constraint(:email)
+    |> cast_assoc(:profile)
   end
 
   def update_token_changeset(%Tutor{} = tutor, token_attr) do

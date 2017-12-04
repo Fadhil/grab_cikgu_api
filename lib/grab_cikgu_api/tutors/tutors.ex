@@ -7,7 +7,7 @@ defmodule GrabCikguApi.Tutors do
   import SecureRandom, only: [ urlsafe_base64: 0 ]
   alias GrabCikguApi.Repo
 
-  alias GrabCikguApi.Tutors.Tutor
+  alias GrabCikguApi.Tutors.{Tutor, TutorProfile}
 
   @doc """
   Returns the list of tutors.
@@ -86,10 +86,17 @@ defmodule GrabCikguApi.Tutors do
     |> Repo.update
   end
 
-  def update_tutor(%Tutor{} = tutor, attrs) do
-    tutor
-    |> Tutor.changeset(attrs)
-    |> Repo.update()
+  def update_tutor(%Tutor{} = tutor, params) do
+
+    {tutor_params, profile_params} =
+      params
+      |> Map.split(["email", "name"])
+
+    profile_changeset = TutorProfile.changeset(tutor.profile, profile_params)
+    tutor_changeset =
+      Tutor.changeset(tutor, tutor_params)
+      |> Ecto.Changeset.put_assoc(:profile, profile_changeset)
+      |> Repo.update()
   end
 
   @doc """
