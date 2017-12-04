@@ -18,5 +18,6 @@ defmodule GrabCikguApiWeb.Router do
 
     pipe_through :authorised
     get "/tutor/profile", TutorProfileController, :show
+    put "/tutor/profile", TutorProfileController, :update
   end
 end
