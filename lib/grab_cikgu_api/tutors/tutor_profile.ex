@@ -40,4 +40,8 @@ defmodule GrabCikguApi.Tutors.TutorProfile do
     profile
     |> cast(attrs, @all_attrs)
   end
+
+  def changeset(%TutorProfile{} = profile, attrs) do
+    new_changeset(profile, attrs)
+  end
 end
