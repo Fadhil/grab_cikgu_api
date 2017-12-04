@@ -16,6 +16,7 @@ use GrabCikguApiWeb, :view
       achievement: tutor.profile.achievement,
       experience: tutor.profile.experience,
       description: tutor.profile.description,
+      subjects: tutor.profile.subjects,
       area_covered: tutor.profile.description,
       hourly_rate_cents: tutor.profile.hourly_rate_cents,
       availability: tutor.profile.availability,
