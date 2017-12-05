@@ -38,7 +38,13 @@ defmodule GrabCikguApi.Mixfile do
       {:phoenix_ecto, "~> 3.2"},
       {:postgrex, ">= 0.0.0"},
       {:gettext, "~> 0.11"},
-      {:cowboy, "~> 1.0"}
+      {:cowboy, "~> 1.0"},
+      {:cors_plug, "~> 1.2"},
+      {:comeonin, "~> 4.0"},
+      {:bcrypt_elixir, "~> 0.12"},
+      {:secure_random, "~> 0.5"},
+      {:edeliver, "~> 1.4.2"},
+      {:distillery, "~> 1.5", runtime: false}
     ]
   end
 
