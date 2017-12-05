@@ -16,7 +16,7 @@ use Mix.Config
 config :grab_cikgu_api, GrabCikguApiWeb.Endpoint,
 	http: [port: 8888],
   load_from_system_env: true,
-  url: [host: "http://ec2-54-254-212-243.ap-southeast-1.compute.amazonaws.com", port: 8888],
+  url: [host: "127.0.0.1", port: 8888],
   cache_static_manifest: "priv/static/cache_manifest.json",
 	server: true
 
