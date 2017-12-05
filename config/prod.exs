@@ -15,7 +15,6 @@ use Mix.Config
 # which you typically run after static files are built.
 config :grab_cikgu_api, GrabCikguApiWeb.Endpoint,
   http: [port: 8888, ip: {127,0,0,1}],
-  load_from_system_env: true,
   server: true
 
 # Do not print debug messages in production
