@@ -3,6 +3,8 @@ defmodule GrabCikguApiWeb.SessionController do
 
   alias GrabCikguApi.Tutors
   alias GrabCikguApi.Tutors.Tutor
+  alias GrabCikguApi.Students
+  alias GrabCikguApi.Students.Student
 
   import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
 
@@ -26,4 +28,23 @@ defmodule GrabCikguApiWeb.SessionController do
     end
   end
 
+  def create(conn, %{"student" => student_params}) do
+    student= Students.get_student(student_params["email"])
+    cond do
+      student && checkpw(student_params["password"], student.password_hash) ->
+        {:ok, %Student{token: session_token}} = Students.update_token(student)
+        conn
+        |> put_status(:created)
+        |> render("show.json", session_token: session_token )
+      student ->
+        conn
+        |> put_status(:unauthorized)
+        |> render("error.json", student_params)
+      true ->
+        dummy_checkpw()
+        conn
+        |> put_status(:unauthorized)
+        |> render("error.json", student_params)
+    end
+  end
 end
