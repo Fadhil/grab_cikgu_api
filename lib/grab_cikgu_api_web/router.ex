@@ -14,6 +14,7 @@ defmodule GrabCikguApiWeb.Router do
     pipe_through :api
 
     resources "/tutors", TutorController
+    resources "/students", StudentController
     post "/sessions", SessionController, :create
 
     pipe_through :authorised
