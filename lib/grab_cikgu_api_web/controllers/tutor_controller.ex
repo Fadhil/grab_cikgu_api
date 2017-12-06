@@ -6,6 +6,11 @@ defmodule GrabCikguApiWeb.TutorController do
 
   action_fallback GrabCikguApiWeb.FallbackController
 
+  def index(conn, %{"state" => state}) do
+    tutors = Tutors.list_tutors(state)
+    render(conn, "index.json", tutors: tutors)
+  end
+
   def index(conn, _params) do
     tutors = Tutors.list_tutors()
     render(conn, "index.json", tutors: tutors)

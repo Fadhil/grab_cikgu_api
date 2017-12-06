@@ -10,7 +10,8 @@ defmodule GrabCikguApi.Tutors do
   alias GrabCikguApi.Tutors.{Tutor, TutorProfile}
 
   @doc """
-  Returns the list of tutors.
+  Returns the list of tutors. If given a state string, returns a list
+  of tutors from that state.
 
   ## Examples
 
@@ -21,6 +22,17 @@ defmodule GrabCikguApi.Tutors do
   def list_tutors do
     Repo.all(Tutor) |> Repo.preload(:profile)
   end
+
+  def list_tutors(state) do
+    query =
+      from t in Tutor,
+      join: p in assoc(t, :profile),
+      where: p.state == ^state
+
+    Repo.all(query) |> Repo.preload(:profile)
+  end
+
+
 
   @doc """
   Gets a user by token
