@@ -1,6 +1,6 @@
 APP="grab_cikgu_api"
 
-BUILD_HOST="ec2-52-221-211-170.ap-southeast-1.compute.amazonaws.com"
+BUILD_HOST="ec2-52-77-246-127.ap-southeast-1.compute.amazonaws.com"
 BUILD_USER="fadhil"
 BUILD_AT="/tmp/edeliver/$APP/builds"
 
