@@ -1,6 +1,10 @@
 defmodule GrabCikguApiWeb.RequestView do
   use GrabCikguApiWeb, :view
 
+  def render("index.json", %{requests: requests}) do
+    %{data: render_many(requests, __MODULE__, "request.json")}
+  end
+
   def render("show.json", %{request: request}) do
     %{data: render_one(request, __MODULE__, "request.json")}
   end

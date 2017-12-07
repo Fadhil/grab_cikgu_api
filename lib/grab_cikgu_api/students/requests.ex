@@ -12,4 +12,8 @@ defmodule GrabCikguApi.Students.Requests do
     |> Request.put_tutor_and_student(tutor, student)
     |> Repo.insert()
   end
+
+  def list_requests() do
+    Repo.all(Request) |> Repo.preload([:tutor, :student])
+  end
 end

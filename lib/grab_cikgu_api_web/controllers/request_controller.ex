@@ -9,6 +9,11 @@ defmodule GrabCikguApiWeb.RequestController do
 
   action_fallback GrabCikguApiWeb.FallbackController
 
+  def index(conn, _params) do
+    requests = Requests.list_requests()
+    render(conn, "index.json", requests: requests)
+  end
+
   def create(conn, %{"request" => request_params}) do
     student = conn.assigns.current_user
     tutor_id = request_params["tutor_id"]
