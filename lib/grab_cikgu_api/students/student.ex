@@ -40,4 +40,9 @@ defmodule GrabCikguApi.Students.Student do
     end
   end
 
+  def changeset(%Student{} = student, attrs \\ %{}) do
+    student
+    |> cast(attrs, @all_attrs)
+  end
+
 end

@@ -26,6 +26,7 @@ defmodule GrabCikguApiWeb.TutorController do
   end
 
   def show(conn, %{"id" => id}) do
+    id = String.to_integer(id)
     tutor = Tutors.get_tutor!(id)
     render(conn, "show.json", tutor: tutor)
   end
