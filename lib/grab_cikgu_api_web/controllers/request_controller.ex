@@ -1,6 +1,7 @@
 defmodule GrabCikguApiWeb.RequestController do
   use GrabCikguApiWeb, :controller
 
+  alias GrabCikguApi.Tutors
   alias GrabCikguApi.Tutors.Tutor
   alias GrabCikguApi.Students.Student
   alias GrabCikguApi.Students.Requests
@@ -9,10 +10,11 @@ defmodule GrabCikguApiWeb.RequestController do
   action_fallback GrabCikguApiWeb.FallbackController
 
   def create(conn, %{"request" => request_params}) do
+    student = conn.assigns.current_user
+    tutor_id = request_params["tutor_id"]
+    tutor = Tutors.get_tutor!(tutor_id)
     require IEx; IEx.pry
 
-    student = conn.assigns.current_user
-    tutor = request_params["tutor_id"]
     with {:ok, %Request{} = request} <- Requests.create(student, tutor, request_params) do
       conn
       |> put_status(:created)

@@ -1,7 +1,7 @@
 defmodule GrabCikguApi.Students.Student do
   use Ecto.Schema
   import Ecto.Changeset
-  alias GrabCikguApi.Students.{Student}
+  alias GrabCikguApi.Students.{Student, StudentProfile}
 
   schema "students" do
     field :name, :string
@@ -9,6 +9,7 @@ defmodule GrabCikguApi.Students.Student do
     field :password, :string, virtual: true
     field :password_hash, :string
     field :token, :string
+    has_one :profile, StudentProfile, on_delete: :delete_all
 
     timestamps()
   end

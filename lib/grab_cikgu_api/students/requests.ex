@@ -2,6 +2,7 @@ defmodule GrabCikguApi.Students.Requests do
   alias GrabCikguApi.Students.Requests.Request
   alias GrabCikguApi.Tutors.Tutor
   alias GrabCikguApi.Students.Student
+  alias GrabCikguApi.Repo
   @doc """
   Makes a new request based on the student_id and tutor_id
   """

@@ -10,6 +10,8 @@ defmodule GrabCikguApi.Students.Requests.Request do
     field :remarks, :string
     belongs_to :tutor, Tutor
     belongs_to :student, Student
+
+    timestamps
   end
 
   @all_attrs [:remarks]
@@ -17,12 +19,12 @@ defmodule GrabCikguApi.Students.Requests.Request do
   def changeset(%Request{} = request, attrs) do
     request
     |> cast(attrs, @all_attrs)
-    |> validate_required([:tutor_id, :student_id])
+    # |> validate_required([:tutor_id, :student_id])
   end
 
   def put_tutor_and_student(changeset, tutor, student) do
-    tc = tutor |> Tutor.changeset
-    sc = student |> Student.changeset
+    tc = tutor |> Tutor.changeset(%{})
+    sc = student |> Student.changeset(%{})
     changeset
     |> put_assoc(:tutor, tutor)
     |> put_assoc(:student, student)
