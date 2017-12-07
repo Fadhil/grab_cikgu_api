@@ -55,7 +55,10 @@ defmodule GrabCikguApi.Tutors do
       ** (Ecto.NoResultsError)
 
   """
-  def get_tutor!(id) when is_integer(id), do: Repo.get!(Tutor, id)
+  def get_tutor!(id) when is_integer(id) do
+    Repo.get!(Tutor, id)
+    |> Repo.preload(:profile)
+  end
 
   def get_tutor(email) when is_bitstring(email) do
     Repo.get_by(Tutor, %{email: email})
