@@ -14,6 +14,7 @@ defmodule GrabCikguApi.Students.Requests do
   end
 
   def list_requests() do
-    Repo.all(Request) |> Repo.preload([:tutor, :student])
+    Repo.all(Request)
+    |> Repo.preload([tutor: [:profile], student: [:profile]])
   end
 end

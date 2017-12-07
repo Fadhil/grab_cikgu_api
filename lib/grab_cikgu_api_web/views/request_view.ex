@@ -14,7 +14,9 @@ defmodule GrabCikguApiWeb.RequestView do
       id: request.id,
       tutor_id: request.tutor_id,
       student_id: request.student_id,
-      remarks: request.remarks
+      remarks: request.remarks,
+      tutor_name: request.tutor.profile.full_name,
+      student_name: request.student.name
     }
   end
 end
