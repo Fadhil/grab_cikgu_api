@@ -13,7 +13,6 @@ defmodule GrabCikguApiWeb.RequestController do
     student = conn.assigns.current_user
     tutor_id = request_params["tutor_id"]
     tutor = Tutors.get_tutor!(tutor_id)
-    require IEx; IEx.pry
 
     with {:ok, %Request{} = request} <- Requests.create(student, tutor, request_params) do
       conn
