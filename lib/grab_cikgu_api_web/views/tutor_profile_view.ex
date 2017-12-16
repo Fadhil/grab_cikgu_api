@@ -10,6 +10,7 @@ use GrabCikguApiWeb, :view
       occupation: tutor.profile.occupation,
       address: tutor.profile.address,
       state: tutor.profile.state,
+      city: tutor.profile.city,
       phone_no: tutor.profile.phone_no,
       tutor_license_no: tutor.profile.tutor_license_no,
       qualification: tutor.profile.qualification,
