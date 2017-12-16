@@ -41,7 +41,7 @@ config :phoenix, :stacktrace_depth, 20
 config :grab_cikgu_api, GrabCikguApi.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "postgres",
+  password: "6393",
   database: "grab_cikgu_api_dev",
   hostname: "localhost",
   pool_size: 10

@@ -26,6 +26,7 @@ defmodule GrabCikguApi.Tutors.TutorProfile do
     field :bank_acc_name, :string
     field :bank_acc_no, :string
     field :bank_name, :string
+    field :hourlyRate, :string
 
     belongs_to :tutor, Tutor
 
@@ -36,7 +37,7 @@ defmodule GrabCikguApi.Tutors.TutorProfile do
     :phone_no, :tutor_license_no, :qualification, :achievement, :experience,
     :description, :area_covered, :hourly_rate_cents, :availability,
     :teach_in_center, :bank_acc_name, :bank_acc_name, :bank_name, :state,
-    :subjects, :city
+    :subjects, :city, :hourlyRate
   ]
 
   def new_changeset(%TutorProfile{} = profile, attrs) do
