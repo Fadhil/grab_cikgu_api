@@ -7,7 +7,22 @@ defmodule GrabCikguApi.Tutors do
   import SecureRandom, only: [ urlsafe_base64: 0 ]
   alias GrabCikguApi.Repo
 
-  alias GrabCikguApi.Tutors.{Tutor, TutorProfile}
+  alias GrabCikguApi.Tutors.{Tutor, TutorProfile, Subject}
+
+  @doc """
+  Returns the list of subjects.
+
+  ## Examples
+
+      iex> list_subjects()
+      [%Subject{}, ...]
+
+  """
+
+  def list_subjects do
+    Repo.all(Subject)
+  end
+
 
   @doc """
   Returns the list of tutors. If given a state string, returns a list

@@ -24,7 +24,8 @@ use GrabCikguApiWeb, :view
       teach_in_center: tutor.profile.teach_in_center,
       bank_acc_name: tutor.profile.bank_acc_name,
       bank_acc_no: tutor.profile.bank_acc_no,
-      bank_name: tutor.profile.bank_name
+      bank_name: tutor.profile.bank_name,
+      hourlyRate: tutor.profile.hourlyRate 
     }
   end
 end
