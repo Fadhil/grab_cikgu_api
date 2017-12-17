@@ -9,6 +9,10 @@ defmodule GrabCikguApi.Tutors do
 
   alias GrabCikguApi.Tutors.{Tutor, TutorProfile, Subject}
 
+  def get_subject(name, level) do
+    Repo.get_by(Subject, %{name: name, level: level})
+  end
+
   @doc """
   Returns the list of subjects.
 
