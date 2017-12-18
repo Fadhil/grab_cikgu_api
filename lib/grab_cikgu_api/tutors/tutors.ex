@@ -51,6 +51,16 @@ defmodule GrabCikguApi.Tutors do
     Repo.all(query) |> Repo.preload(:profile)
   end
 
+  def list_tutors(state, city, rate) do
+    query =
+      from t in Tutor,
+      join: p in assoc(t, :profile),
+      where: p.state == ^state and p.city == ^city and p.hourlyRate == ^rate
+
+      Repo.all(query) |> Repo.preload(:profile)
+
+  end
+
 
 
   @doc """

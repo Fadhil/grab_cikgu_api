@@ -17,10 +17,12 @@ defmodule GrabCikguApiWeb.Router do
     resources "/students", StudentController
     post "/sessions", SessionController, :create
     resources "/subjects", SubjectController
+    post "/search", SearchController, :search
 
     pipe_through :authorised
     get "/tutor/profile", TutorProfileController, :show
     put "/tutor/profile", TutorProfileController, :update
     resources "/requests", RequestController
+
   end
 end
